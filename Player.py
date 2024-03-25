@@ -22,6 +22,13 @@ class Player(SphereCollideObject):
         self.modelNode.setPos(posVec)
         self.modelNode.setScale(scaleVec)
 
+        self.explodeNode = self.render.attachNewNode('ExplosionEffects')        
+        base.enableParticles()
+        self.explodeEffect = ParticleEffect()
+        self.explodeEffect.loadConfig("./Assets/ParticleEffects/basic_xpld_efx.ptf")
+        self.explodeEffect.setScale(20)
+        self.explodeNode = self.render.attachNewNode('ExplosionEffects') 
+
         tex = loader.loadTexture(texPath)
         self.modelNode.setTexture(tex, 1)
 
@@ -244,12 +251,12 @@ class Player(SphereCollideObject):
 
         elif t == 0:
             self.explodeEffect.start(self.explodeNode)
-    def SetParticles(self):
+    '''def SetParticles(self):
         base.enableParticles()
         self.explodeEffect = ParticleEffect()
         self.explodeEffect.loadConfig("./Assets/ParticleEffects/basic_xpld_efx.ptf")
         self.explodeEffect.setScale(20)
-        self.explodeNode = self.render.attachNewNode('ExplosionEffects')
+        self.explodeNode = self.render.attachNewNode('ExplosionEffects')'''
 
     # Keybinds.
     def SetKeyBindings(self):
