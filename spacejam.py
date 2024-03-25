@@ -9,6 +9,11 @@ from CollideObjectBase import PlacedObject
 class SpaceJam(ShowBase): #Constructor
     def __init__(self):
         ShowBase.__init__(self)
+
+        self.traverser = CollisionTraverser()
+        self.cTrav = self.traverser
+        self.traverser.traverse(self.render)
+        self.pusher = CollisionHandlerPusher()
         
         self.SetupScene()
         
@@ -26,10 +31,7 @@ class SpaceJam(ShowBase): #Constructor
         self.DrawCircleXZ()
         self.DrawCircleYZ()
         # Colliders.
-        self.traverser = CollisionTraverser()
-        self.cTrav = self.traverser
-        self.traverser.traverse(self.render)
-        self.pusher = CollisionHandlerPusher()
+
         self.pusher.addCollider(self.Player.collisionNode, self.Player.modelNode)
         self.traverser.addCollider(self.Player.collisionNode, self.pusher)
 

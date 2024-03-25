@@ -75,7 +75,7 @@ class Player(SphereCollideObject):
             self.taskManager.remove('left-turn')
     def ApplyLeftTurn(self, task):
         # Rate = turn speed
-        rate = 3
+        rate = 2
         self.modelNode.setH(self.modelNode.getH() + rate)
         return Task.cont          
 
@@ -86,7 +86,7 @@ class Player(SphereCollideObject):
             self.taskManager.remove('right-turn')
     def ApplyRightTurn(self, task):
         # Rate = turn speed
-        rate = 3
+        rate = 2
         self.modelNode.setH(self.modelNode.getH() - rate)
         return Task.cont          
  
@@ -120,7 +120,7 @@ class Player(SphereCollideObject):
         else:
             self.taskManager.remove('turn-up')
     def ApplyUpTurn(self, task):
-        rate = 3
+        rate = 2
         self.modelNode.setP(self.modelNode.getP() + rate)
         return Task.cont    
  
@@ -130,9 +130,10 @@ class Player(SphereCollideObject):
         else:
             self.taskManager.remove('turn-down')
     def ApplyDownTurn(self, task):
-        rate = 3
+        rate = 2
         self.modelNode.setP(self.modelNode.getP() - rate)
         return Task.cont    
+    # See if I can make a setting to reset the camera's orientation.
     def Fire(self):
         if self.missileBay:
             travRate = self.missileDistance
