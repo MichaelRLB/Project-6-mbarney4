@@ -133,7 +133,16 @@ class Player(SphereCollideObject):
         rate = 2
         self.modelNode.setP(self.modelNode.getP() - rate)
         return Task.cont    
-    # See if I can make a setting to reset the camera's orientation.
+    # Resets the camera's orientation when actived.
+    def OrienReset(self, keyDown):
+        if keyDown:
+            self.taskManager.add(self.ApplyOrienReset, 'orien-reset')
+        else:
+            self.taskManager.remove('orien-reset')
+    def ApplyOrienReset(self, task):
+        self.modelNode.setP(0)
+        self.modelNode.setR(0)
+        return Task.cont
     def Fire(self):
         if self.missileBay:
             travRate = self.missileDistance
@@ -276,5 +285,8 @@ class Player(SphereCollideObject):
         self.accept('arrow_down-up', self.DownTurn, [0])
         self.accept('s', self.DownTurn, [1])
         self.accept('s-up', self.DownTurn, [0]) 
+
+        self.accept('r', self.OrienReset, [1])
+        self.accept('r-up', self.OrienReset, [0])
 
         self.accept('f', self.Fire)
