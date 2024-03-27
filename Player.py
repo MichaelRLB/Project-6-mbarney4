@@ -21,12 +21,13 @@ class Player(SphereCollideObject):
         self.loader = loader
         self.modelNode.setPos(posVec)
         self.modelNode.setScale(scaleVec)
-
+        
+        # SetParticles.
         self.explodeNode = self.render.attachNewNode('ExplosionEffects')        
         base.enableParticles()
         self.explodeEffect = ParticleEffect()
         self.explodeEffect.loadConfig("./Assets/ParticleEffects/basic_xpld_efx.ptf")
-        self.explodeEffect.setScale(20)
+        self.explodeEffect.setScale(50)
         self.explodeNode = self.render.attachNewNode('ExplosionEffects') 
 
         tex = loader.loadTexture(texPath)
@@ -225,7 +226,7 @@ class Player(SphereCollideObject):
         pattern = r'[0-9]'
         strippedString = re.sub(pattern, '', victim)
         if (strippedString == "Drone"):
-            print(shooter + 'is DONE.')
+            print(shooter + ' is DONE.')
             Missile.Intervals[shooter].finish()
             print(victim, ' hit at ', intoPosition)
             self.DroneDestroy(victim, intoPosition)

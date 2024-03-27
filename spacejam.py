@@ -35,7 +35,7 @@ class SpaceJam(ShowBase): #Constructor
         self.pusher.addCollider(self.Player.collisionNode, self.Player.modelNode)
         self.traverser.addCollider(self.Player.collisionNode, self.pusher)
 
-        self.traverser.showCollisions(self.render)
+        #self.traverser.showCollisions(self.render)
 
     def SetCamera(self):
         #self.disableMouse()
@@ -46,7 +46,7 @@ class SpaceJam(ShowBase): #Constructor
         unitVec = defensePaths.Cloud()
         unitVec.normalize()
         position = unitVec * 500 + centralObject.modelNode.getPos()
-        spaceJamClasses.Drone(self.loader, "./Assets/Drones/JulesVerne.obj", self.render, droneName, "./Assets/Drones/Textures/sh3.jpg", position, 50)
+        spaceJamClasses.Drone(self.loader, "./Assets/Drones/JulesVerne.obj", self.render, droneName, "./Assets/Drones/Textures/sh3.jpg", position, 100)
     def DrawBaseballSeams(self, centralObject, droneName, step, numSeams, radius = 1):
         unitVec = defensePaths.BaseballSeams(step, numSeams, B = 0.4)
         unitVec.normalize()
@@ -105,19 +105,19 @@ class SpaceJam(ShowBase): #Constructor
         self.Player = myPlayer.Player(self.loader, "./Assets/Player/theBorg.x", self.render, 'Player', "Assets/Player/theBorg.jpg", (150, 1500, 67), 5, self.taskMgr, self.render, self.accept, self.traverser)
 
         # Space station setup
-        self.Station = spaceJamClasses.Station(self.loader, "./Assets/SpaceStation1B/spaceStation.x", self.render, 'Station', "Assets/SpaceStation1B/SpaceStation1_Dif2.png", (-1500, 7000, 100), 100)
+        self.Station = spaceJamClasses.Station(self.loader, "./Assets/SpaceStation1B/spaceStation.x", self.render, 'Station', "Assets/SpaceStation1B/SpaceStation1_Dif2.png", (-1500, 8000, 100), 100)
 
         # Planet 1 setup
-        self.Planet1 = spaceJamClasses.Planet(self.loader, "./Assets/Planets/protoPlanet.x", self.render, 'Planet1', "Assets/Planets/planet1.jpg", (300, 5000, 67), 350)
+        self.Planet1 = spaceJamClasses.Planet(self.loader, "./Assets/Planets/protoPlanet.x", self.render, 'Planet1', "Assets/Planets/planet1.jpg", (350, 5000, 67), 350)
 
         # Planet 2 setup
-        self.Planet2 = spaceJamClasses.Planet(self.loader, "./Assets/Planets/protoPlanet.x", self.render, 'Planet2', "Assets/Planets/planet2.jpg", (1500, 5000, 67), 350)
+        self.Planet2 = spaceJamClasses.Planet(self.loader, "./Assets/Planets/protoPlanet.x", self.render, 'Planet2', "Assets/Planets/planet2.jpg", (1500, -5000, 67), 350)
 
         # Planet 3 setup
-        self.Planet3 = spaceJamClasses.Planet(self.loader, "./Assets/Planets/protoPlanet.x", self.render, 'Planet3', "Assets/Planets/planet3.jpg", (-1500, 5000, 100), 350)
+        self.Planet3 = spaceJamClasses.Planet(self.loader, "./Assets/Planets/protoPlanet.x", self.render, 'Planet3', "Assets/Planets/planet3.jpg", (-1000, -5000, 100), 350)
 
         # Planet 4 setup
-        self.Planet4 = spaceJamClasses.Planet(self.loader, "./Assets/Planets/protoPlanet.x", self.render, 'Planet4', "Assets/Planets/planet4.jpg", (-2500, 5000, -67), 350)      
+        self.Planet4 = spaceJamClasses.Planet(self.loader, "./Assets/Planets/protoPlanet.x", self.render, 'Planet4', "Assets/Planets/planet4.jpg", (-1500, 3000, -67), 350)      
 
         # Planet 5 setup
         self.Planet5 = spaceJamClasses.Planet(self.loader, "./Assets/Planets/protoPlanet.x", self.render, 'Planet5', "Assets/Planets/planet5.jpg", (2500, 5000, -67), 350)
